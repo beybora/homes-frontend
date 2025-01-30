@@ -47,16 +47,16 @@ const MenuItem = ({ item }) => {
     <div className="relative group">
       <Link
         href={item.url}
-        className="hover:bg-pink-300 px-4 py-2 rounded-md cursor-pointer inline-block"
+        className="hover:bg-pink-300 px-4 py-5 rounded-md cursor-pointer inline-block"
       >
         {item.label}
       </Link>
 
       {/* Dropdown-Menü für Unterpunkte */}
       {item.children.length > 0 && (
-        <div className="absolute left-0 mt-2 w-48 bg-slate-800 shadow-lg rounded-md hidden group-hover:flex flex-col">
+        <div className="absolute left-0  mt-[-1px] bg-slate-800 shadow-lg rounded-md hidden group-hover:flex flex-col">
           {item.children.map((child) => (
-            <MenuItem key={child.id} item={child} />
+            <MenuItem className="px-10" key={child.id} item={child} />
           ))}
         </div>
       )}

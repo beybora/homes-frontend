@@ -4,7 +4,6 @@ import { BlockRenderer } from "components/BlockRenderer/BlockRenderer";
 import { cleanAndTransformBlocks } from "utils/cleanAndTransformBlocks";
 import { MainMenu } from "components/MainMenu";
 
-
 export default function Home({ blocks, mainMenuItems }) {
   console.log(blocks);
   console.log(mainMenuItems);
@@ -31,6 +30,7 @@ export const getStaticProps = async () => {
             id
             label
             url
+            parentId
           }
         }
       }
