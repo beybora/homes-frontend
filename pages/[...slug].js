@@ -1,9 +1,10 @@
 import { gql } from "@apollo/client";
 import client from "client";
+import { BlockRenderer } from "components/BlockRenderer";
 import { cleanAndTransformBlocks } from "utils/cleanAndTransformBlocks";
 
-export default function Page() {
-  return <div> Page</div>;
+export default function Page(props) {
+  return <BlockRenderer blocks={props.blocks} />;
 }
 
 export const getStaticProps = async (context) => {
@@ -11,7 +12,7 @@ export const getStaticProps = async (context) => {
   const { data } = await client.query({
     query: gql`
       query NewQuery($uri: String!) {
-        nodeByUri(uri: $uri) {
+        nodeByUri(uri: $uri) {da hab
           ... on Page {
             id  
             blocks(postTemplate: false)
