@@ -12,7 +12,7 @@ export const getStaticProps = async (context) => {
   const { data } = await client.query({
     query: gql`
       query NewQuery($uri: String!) {
-        nodeByUri(uri: $uri) {da hab
+        nodeByUri(uri: $uri) {
           ... on Page {
             id  
             blocks(postTemplate: false)
