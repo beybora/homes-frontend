@@ -1,25 +1,26 @@
+import ButtonLink from "components/ButtonLink/ButtonLink";
 import Link from "next/link";
 import React from "react";
 
 // Funktion zur Umwandlung einer flachen Liste in eine verschachtelte Menüstruktur
 const buildMenuTree = (menuItems) => {
-    const menuMap = new Map();
-    const rootMenu = [];
-  
-    // Menü-Objekte in Map speichern
-    menuItems.forEach(item => menuMap.set(item.id, { ...item, children: [] }));
-  
-    // Eltern-Kind-Struktur aufbauen
-    menuItems.forEach(item => {
-      if (item.parentId) {
-        menuMap.get(item.parentId)?.children.push(menuMap.get(item.id));
-      } else {
-        rootMenu.push(menuMap.get(item.id));
-      }
-    });
-  
-    return rootMenu;
-  };
+  const menuMap = new Map();
+  const rootMenu = [];
+
+  // Menü-Objekte in Map speichern
+    menuItems.forEach((item) => menuMap.set(item.id, { ...item, children: [] }));
+
+  // Eltern-Kind-Struktur aufbauen
+    menuItems.forEach((item) => {
+    if (item.parentId) {
+      menuMap.get(item.parentId)?.children.push(menuMap.get(item.id));
+    } else {
+      rootMenu.push(menuMap.get(item.id));
+    }
+  });
+
+  return rootMenu;
+};
 
 export const MainMenu = ({ items }) => {
   const menu = buildMenuTree(items); // Menüstruktur aufbauen
@@ -36,6 +37,10 @@ export const MainMenu = ({ items }) => {
         {menu.map((item) => (
           <MenuItem key={item.id} item={item} />
         ))}
+        <div>
+          {" "}
+          <ButtonLink destination={"/"} label={"asd"} />{" "}
+        </div>
       </div>
     </div>
   );
