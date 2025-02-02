@@ -8,10 +8,10 @@ const buildMenuTree = (menuItems) => {
   const rootMenu = [];
 
   // Menü-Objekte in Map speichern
-    menuItems.forEach((item) => menuMap.set(item.id, { ...item, children: [] }));
+  menuItems.forEach((item) => menuMap.set(item.id, { ...item, children: [] }));
 
   // Eltern-Kind-Struktur aufbauen
-    menuItems.forEach((item) => {
+  menuItems.forEach((item) => {
     if (item.parentId) {
       menuMap.get(item.parentId)?.children.push(menuMap.get(item.id));
     } else {
@@ -33,7 +33,7 @@ export const MainMenu = ({ items }) => {
       </div>
 
       {/* Navigation */}
-      <div className="flex gap-8">
+      <div className="flex gap-8 items-center">
         {menu.map((item) => (
           <MenuItem key={item.id} item={item} />
         ))}
@@ -59,7 +59,7 @@ const MenuItem = ({ item }) => {
 
       {/* Dropdown-Menü für Unterpunkte */}
       {item.children.length > 0 && (
-        <div className="absolute left-0  mt-[-1px] bg-slate-800 shadow-lg rounded-md hidden group-hover:flex flex-col">
+        <div className="absolute left-0  mt-[-1px] bg-slate-800 shadow-lg rounded-md hidden group-hover:flex flex-col w-[200%] hover:bg-pink-300">
           {item.children.map((child) => (
             <MenuItem className="px-10" key={child.id} item={child} />
           ))}
