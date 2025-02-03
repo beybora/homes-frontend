@@ -7,7 +7,6 @@ export default Page;
 
 export const getStaticProps = getPageStaticProps;
 
-
 export const getStaticPaths = async () => {
   const { data } = await client.query({
     query: gql`
@@ -17,12 +16,18 @@ export const getStaticPaths = async () => {
             uri
           }
         }
+        properties {
+          nodes {
+            uri
+            title
+          }
+        }
       }
     `,
   });
 
   return {
-    paths: data.pages.nodes
+    paths: [...data.pages.nodes, ...data.properties.nodes]
       .filter((page) => page.uri !== "/")
       .map((page) => ({
         params: {
