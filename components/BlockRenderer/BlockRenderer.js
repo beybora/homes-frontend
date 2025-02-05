@@ -3,10 +3,11 @@ import Columns from "components/Columns/Columns";
 import Cover from "components/Cover/Cover";
 import Heading from "components/Heading/Heading";
 import Paragraph from "components/Paragraph/Paragraph";
+import PropertySearch from "components/PropertySearch/PropertySearch";
 import Image from "next/image";
 
 export const BlockRenderer = ({ blocks }) => {
-  console.log(blocks);
+  console.log(blocks.map((block) => block.name));
   return blocks.map((block) => {
     switch (block.name) {
       case "core/heading":
@@ -71,8 +72,12 @@ export const BlockRenderer = ({ blocks }) => {
             alt={block.attributes.alt || ""}
           />
         );
+      case "core/search":
+        return (
+          <PropertySearch key={block.id} />
+        );
       default:
-        return null;
+        return null
     }
   });
 };
