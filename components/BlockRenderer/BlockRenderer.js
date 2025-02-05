@@ -10,6 +10,7 @@ export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
       case "core/heading":
+      case "core/post-title":
         return (
           <Heading
             key={block.id}
@@ -45,9 +46,7 @@ export const BlockRenderer = ({ blocks }) => {
         return (
           <Column key={block.id}>
             {" "}
-            <BlockRenderer
-              blocks={block.innerBlocks}
-            />
+            <BlockRenderer blocks={block.innerBlocks} />
           </Column>
         );
       case "core/block":
