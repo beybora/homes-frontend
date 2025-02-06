@@ -3,10 +3,18 @@ import client from "client";
 
 const handler = async (req, res) => {
   try {
+    const filters = JSON.parse(req.body);
     const { data } = await client.query({
       query: gql`
         query AllPropertiesQuery {
-          properties {
+            properties(where: {offsetPagination: {size: 3, offset: ${
+              ((filters.page || 1) - 1) * 2
+            }}}){
+            pageInfo {
+              offsetPagination {
+                total
+              }
+            }
             nodes {
               id
               title
@@ -31,6 +39,7 @@ const handler = async (req, res) => {
     });
     res.status(200).json({
       properties: data.properties.nodes,
+      total: data.properties.pageInfo.offsetPagination.total,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

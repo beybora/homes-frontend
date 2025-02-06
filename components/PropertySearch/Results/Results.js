@@ -6,7 +6,7 @@ const Results = ({ properties }) => {
       {console.log(properties)}
       {properties.map((property) => (
         <PropertyCard 
-          key={property.databaseId}
+          key={property.id}
           title={property.title}
           destination={property.uri}
           bedrooms={property.propertyFeatures.bedrooms}

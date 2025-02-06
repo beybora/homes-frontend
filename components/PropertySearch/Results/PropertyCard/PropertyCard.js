@@ -12,7 +12,7 @@ const PropertyCard = ({ title, price, bedrooms, bathrooms, hasParking, petFriend
       <div className="text-lg mt-3 font-bold">{title}</div>
       <Image src={image} alt={title} height="200" width="300" />
       <div className="text-md mt-3 font-bold">{numeral(price).format('$0,0')}</div>
-      <div class="flex justify-between text-sm mt-3"> 
+      <div className="flex justify-between text-sm mt-3"> 
         <div> <FontAwesomeIcon icon={faBed} /> {bedrooms}</div>
         <div> <FontAwesomeIcon icon={faBathtub} /> {bathrooms}</div>
       </div>
