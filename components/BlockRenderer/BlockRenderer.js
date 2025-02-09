@@ -2,6 +2,7 @@ import Column from "components/Column/Column";
 import Columns from "components/Columns/Columns";
 import ContactForm from "components/ContactForm/ContactForm";
 import Cover from "components/Cover/Cover";
+import Gallery from "components/Gallery/Gallery";
 import Heading from "components/Heading/Heading";
 import Paragraph from "components/Paragraph/Paragraph";
 import PropertyFeatures from "components/PropertyFeatures/PropertyFeatures";
@@ -12,6 +13,17 @@ export const BlockRenderer = ({ blocks }) => {
   console.log(blocks.map((block) => block));
   return blocks.map((block) => {
     switch (block.name) {
+      case "core/gallery":
+        console.log(block.attributes, "block attributes");
+        return (
+          <Gallery
+            key={block.id}
+            columns={block.attributes.columns || 3}
+            imageCrop={block.attributes.imageCrop || false}
+            items={block.innerBlocks}
+            attributes={block.attributes}
+          />
+        );
       case "lazyblock/contact-form":
         return <ContactForm key={block.id} />;
       case "lazyblock/property-features":
