@@ -13,11 +13,19 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocks(postTemplate: false)
+             seo {
+             title
+              metaDesc
+            }
           }
           ... on Property {
             id
             title
             blocks(postTemplate: false)
+            seo {
+              title
+              metaDesc
+            }
           }
         }
         menuItems {
@@ -39,6 +47,7 @@ export const getPageStaticProps = async (context) => {
     props: {
       blocks: cleanAndTransformBlocks(data.nodeByUri.blocks),
       mainMenuItems: data.menuItems.nodes,
+      seo: data.nodeByUri.seo,
     },
   };
 };
