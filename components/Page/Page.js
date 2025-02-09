@@ -4,7 +4,6 @@ import Head from 'next/head';
 import React from 'react'
 
 const Page = ({ blocks, mainMenuItems, seo }) => {
-  console.log(seo, "seo");
   return (
     <div>
       <Head>

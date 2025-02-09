@@ -7,14 +7,17 @@ import Heading from "components/Heading/Heading";
 import Paragraph from "components/Paragraph/Paragraph";
 import PropertyFeatures from "components/PropertyFeatures/PropertyFeatures";
 import PropertySearch from "components/PropertySearch/PropertySearch";
+import TickList from "components/TickList/TickList";
 import Image from "next/image";
 
 export const BlockRenderer = ({ blocks }) => {
   console.log(blocks.map((block) => block));
   return blocks.map((block) => {
     switch (block.name) {
-      case "core/gallery":
+      case "lazyblock/tick-item":
         console.log(block.attributes, "block attributes");
+        return <TickList key={block.id} attributes={block.attributes} />;
+      case "core/gallery":
         return (
           <Gallery
             key={block.id}
@@ -59,6 +62,8 @@ export const BlockRenderer = ({ blocks }) => {
           <Columns
             key={block.id}
             isStackedOnMobile={block.attributes.isStackedOnMobile}
+            textColor={block.attributes.textColor}
+            backgroundColor={block.attributes.backgroundColor}
           >
             <BlockRenderer blocks={block.innerBlocks} />
           </Columns>

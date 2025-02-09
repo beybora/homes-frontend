@@ -2,14 +2,13 @@ import Image from "next/image";
 import React from "react";
 
 const Gallery = ({ columns, items, imageCrop, attributes }) => {
-  console.log
+  console.log;
 
   const columnWidth = 100 / columns;
   let maxWidth = 0;
   let maxHeight = 0;
 
   if (imageCrop) {
-    console.log(items, "items teest");
     items.forEach((item) => {
       if (item.attributes.width > maxWidth) {
         maxWidth = item.attributes.width;
@@ -33,7 +32,7 @@ const Gallery = ({ columns, items, imageCrop, attributes }) => {
             alt={item.attributes.alt || "Gallery Image"}
             width={maxWidth || item.attributes.width}
             height={maxHeight || item.attributes.height}
-               className="w-full h-full object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
       ))}
