@@ -1,15 +1,23 @@
 import Column from "components/Column/Column";
 import Columns from "components/Columns/Columns";
+import ContactForm from "components/ContactForm/ContactForm";
 import Cover from "components/Cover/Cover";
 import Heading from "components/Heading/Heading";
 import Paragraph from "components/Paragraph/Paragraph";
+import PropertyFeatures from "components/PropertyFeatures/PropertyFeatures";
 import PropertySearch from "components/PropertySearch/PropertySearch";
 import Image from "next/image";
 
 export const BlockRenderer = ({ blocks }) => {
-  console.log(blocks.map((block) => block.name));
+  console.log(blocks.map((block) => block));
   return blocks.map((block) => {
     switch (block.name) {
+      case "lazyblock/contact-form":
+        return <ContactForm key={block.id} />;
+      case "lazyblock/property-features":
+        return (
+          <PropertyFeatures key={block.id} attributes={block.attributes} />
+        );
       case "core/heading":
       case "core/post-title":
         return (
@@ -73,11 +81,9 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       case "core/search":
-        return (
-          <PropertySearch key={block.id} />
-        );
+        return <PropertySearch key={block.id} />;
       default:
-        return null
+        return null;
     }
   });
 };
