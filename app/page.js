@@ -1,5 +1,6 @@
 import { BlockRenderer } from "components/BlockRenderer";
 import { getPage } from "utils/getPage";
+import { getSeo } from "utils/getSeo";
 
 export default async function Home() {
   
