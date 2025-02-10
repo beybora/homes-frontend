@@ -10,3 +10,11 @@ export default async function Page ({ params }) {
 
   return <BlockRenderer blocks={data} />;
 }
+
+export async function generateMetadata({ params }) {
+  const seo = await getSeo(params.slug.join("/"));
+  return {
+    title: seo?.title || "",
+    description: seo?.metaDesc || "",
+  };
+}   
