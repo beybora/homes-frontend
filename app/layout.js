@@ -1,5 +1,7 @@
+import { MainMenu } from "components/MainMenu";
 import "../styles/globals.css";
 import { Poppins, Aboreto } from "next/font/google";
+import { getMenu } from "utils/getMenu";
 
 const poppins = Poppins({
     weight: ["400", "700"],
@@ -9,23 +11,21 @@ const poppins = Poppins({
 });
 
 const aboreto = Aboreto({
-    weight: ["400", "700"],
+    weight: ["400"],
     subsets: ["latin"],
     display: "swap",
     variable: "--font-aboreto",
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+    const data = await getMenu();
+    console.log(data, "data");
     return (
         <html lang="en" className={`${poppins.variable} ${aboreto.variable}`}>
-            <head>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>My App</title>
-            </head>
-            <body className={`${poppins.className} ${aboreto.className}`}>
+            <body className="font-body">
+                <MainMenu menuItems={data} />
                 {children}
             </body>
         </html>
-    )
+    ) 
 }

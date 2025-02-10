@@ -22,11 +22,11 @@ const buildMenuTree = (menuItems) => {
   return rootMenu;
 };
 
-export const MainMenu = ({ items }) => {
-  const menu = buildMenuTree(items); // Menüstruktur aufbauen
+export const MainMenu = ({ menuItems }) => {
+  const menu = buildMenuTree(menuItems); // Menüstruktur aufbauen
 
   return (
-    <div className="bg-slate-800 text-white px-5 h-16 sticky top-0 z-50 flex justify-between items-center">
+    <div className="bg-slate-800 text-white px-5 h-16   sticky top-0 z-50 flex justify-between items-center">
       {/* Logo */}
       <div className="py-4 pl-5 text-2xl font-bold text-pink-300">
         <Link href="/"> Homes </Link>
