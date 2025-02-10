@@ -1,3 +1,10 @@
-# Next JS & WordPress: Build rapid NextJS sites with Next & WP
-This is the starter repo for the Next JS & WordPress course, available here:
-https://www.udemy.com/course/next-js-wordpress/?referralCode=49EB7D4FC7617F4FD9F7
+Next.js & WordPress Headless CMS
+A modern frontend using Next.js, WordPress, and GraphQL.
+
+Features
+Static & server-rendered pages
+Headless WordPress integration
+GraphQL for data fetching
+Tailwind CSS styling
+Custom Gutenberg blocks with Lazy Blocks (no ACF Pro needed)
+API routes & React Hooks
