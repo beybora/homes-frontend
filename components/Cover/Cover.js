@@ -8,6 +8,8 @@ const Cover = ({ children, background }) => {
         src={background}
         alt="cover"
         fill
+        priority
+        sizes="80vw"
         className="object-cover mix-blend-soft-light"
       />
       <div className="max-w-5xl z-10">{children}</div>
